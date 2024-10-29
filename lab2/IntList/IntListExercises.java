@@ -35,7 +35,7 @@ public class IntListExercises {
             if (firstEqualsLast) {
                 p.first = 0;
             }
-            p=p.rest;
+            p = p.rest;
         }
     }
 
@@ -73,18 +73,13 @@ public class IntListExercises {
      */
     public static boolean squarePrimes(IntList lst) {
         // Base Case: we have reached the end of the list
-        IntList p = lst;
-        if (p == null) {
-            return true;
+        if (lst == null) {
+            return false;
         }
-
-        boolean currElemIsPrime = Primes.isPrime(p.first);
-
+        boolean currElemIsPrime = Primes.isPrime(lst.first);
         if (currElemIsPrime) {
-            p.first *= p.first;
+            lst.first *= lst.first;
         }
-        p = p.rest;
-
-        return squarePrimes(p);
+        return squarePrimes(lst.rest) || currElemIsPrime;
     }
 }
